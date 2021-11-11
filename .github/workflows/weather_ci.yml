@@ -1,0 +1,28 @@
+name: "Weather Bot"
+on:
+  schedule:
+    - cron:  '0 3 * * 1-5'
+    - cron:  '0 7 * * 1-5'
+  workflow_dispatch:
+  push:
+    branches:
+      - test
+
+
+jobs:
+  spell-check:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install --upgrade certifi python-dateutil
+      - name: Run weather bot
+        run:
+          python3 src/weather_bot.py
+        env:
+          SLACK_WORKSPACE_URL: ${{ secrets.SLACK_WORKSPACE_URL }}
