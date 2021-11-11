@@ -39,6 +39,8 @@ def main() -> None:
     with request.urlopen(req) as res:
         weather = json.loads(res.read().decode().replace("\u3000", ""))[0]
 
+    publishing_office: datetime.datetime = parser.parse(weather["publishingOffice"])
+    report_datetime: datetime.datetime = parser.parse(weather["reportDatetime"])
 
     time_series = weather["timeSeries"]
 
@@ -85,7 +87,8 @@ def main() -> None:
         }
 
 
-    send_message_head: str = f"Hola! {dt_now.month}月{dt_now.day}日({dow_map[dt_now.weekday()]})の名古屋の天気予報です"
+    send_message_head: str = f"Hola!👻 {dt_now.month}月{dt_now.day}日({dow_map[dt_now.weekday()]})の名古屋の天気予報です\n"
+    send_message_sub_head: str = f"{publishing_office} {report_datetime.hour}:{report_datetime.minute}発表\n"
     send_message_today_emoji: str = "今日の天気: "
     send_message_today_text: Optional[str] = None
     send_message_tmr_emoji: str = "明日の天気: "
@@ -109,6 +112,16 @@ def main() -> None:
             "text": send_message_head,
             "emoji": True
         }
+    }
+
+    sub_head_block: Dict[str, Any] = {
+        "type": "section",
+        "fields": [
+            {
+                "type": "mrkdwn",
+                "text": f"{send_message_sub_head}"
+            },
+        ]
     }
 
     today_weather_block: Dict[str, Any] = {
@@ -139,7 +152,9 @@ def main() -> None:
         }
     }
 
-    blocks: List[dict] = [head_block]
+    blocks: List[dict] = []
+    blocks.append(head_block)
+    blocks.append(sub_head_block)
 
     if send_message_today_text is not None:
         blocks.append(today_weather_block)
