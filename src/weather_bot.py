@@ -3,7 +3,6 @@
 import os
 import json
 import datetime
-import locale
 from dateutil import parser
 from typing import Any, Dict, Final, List, Optional
 from urllib import request, error
@@ -11,7 +10,6 @@ from pprint import pprint
 
 from constants import *
 
-locale.setlocale(locale.LC_TIME, 'ja_JP.UTF-8')
 dt_now: datetime.datetime = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9)))
 
 JMA_URL: Final = "https://www.jma.go.jp/bosai/forecast/data/forecast/230000.json"
