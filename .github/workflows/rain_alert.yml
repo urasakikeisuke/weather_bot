@@ -1,0 +1,29 @@
+name: "Rain Alert"
+on:
+  schedule:
+    - cron:  '0 8-23 * * 1-5'
+  workflow_dispatch:
+  push:
+    branches:
+      - test
+
+
+jobs:
+  bot:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install --upgrade certifi numpy matplotlib slack_sdk
+      - name: Run weather bot
+        run:
+          python3 src/rain_alert.py
+        env:
+          YAHOO_APPID: ${{ secrets.YAHOO_APPID }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_WORKSPACE_URL: ${{ secrets.SLACK_WORKSPACE_URL }}
