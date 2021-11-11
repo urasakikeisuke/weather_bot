@@ -85,7 +85,7 @@ def main() -> None:
         }
 
 
-    send_message_head: str = f"Hola! {dt_now.month}月{dt_now.day}日({dow_map[dt_now.weekday()]})の天気予報です"
+    send_message_head: str = f"Hola! {dt_now.month}月{dt_now.day}日({dow_map[dt_now.weekday()]})の名古屋の天気予報です"
     send_message_today_emoji: str = "今日の天気: "
     send_message_today_text: Optional[str] = None
     send_message_tmr_emoji: str = "明日の天気: "
