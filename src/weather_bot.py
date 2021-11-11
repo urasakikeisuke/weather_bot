@@ -39,7 +39,7 @@ def main() -> None:
     with request.urlopen(req) as res:
         weather = json.loads(res.read().decode().replace("\u3000", ""))[0]
 
-    publishing_office: datetime.datetime = parser.parse(weather["publishingOffice"])
+    publishing_office: datetime.datetime = weather["publishingOffice"]
     report_datetime: datetime.datetime = parser.parse(weather["reportDatetime"])
 
     time_series = weather["timeSeries"]
