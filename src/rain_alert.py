@@ -82,20 +82,6 @@ def main() -> None:
     response = json.loads(body)
 
     weather_list = response["Feature"][0]["Property"]["WeatherList"]["Weather"]
-    weather_list = [{'Date': '202111112315', 'Rainfall': 0.0, 'Type': 'observation'},
-                    {'Date': '202111112320', 'Rainfall': 1.0, 'Type': 'forecast'},
-                    {'Date': '202111112325', 'Rainfall': 3.0, 'Type': 'forecast'},
-                    {'Date': '202111112330', 'Rainfall': 5.0, 'Type': 'forecast'},
-                    {'Date': '202111112335', 'Rainfall': 10.0, 'Type': 'forecast'},
-                    {'Date': '202111112340', 'Rainfall': 20.0, 'Type': 'forecast'},
-                    {'Date': '202111112345', 'Rainfall': 10.0, 'Type': 'forecast'},
-                    {'Date': '202111112350', 'Rainfall': 3.0, 'Type': 'forecast'},
-                    {'Date': '202111112355', 'Rainfall': 2.0, 'Type': 'forecast'},
-                    {'Date': '202111120000', 'Rainfall': 1.0, 'Type': 'forecast'},
-                    {'Date': '202111120005', 'Rainfall': 0.5, 'Type': 'forecast'},
-                    {'Date': '202111120010', 'Rainfall': 0.3, 'Type': 'forecast'},
-                    {'Date': '202111120015', 'Rainfall': 0.1, 'Type': 'forecast'}]
-    # pprint(weather_list)
 
     current_time: datetime.datetime
     bgn_rain_fall: float = 0.0
