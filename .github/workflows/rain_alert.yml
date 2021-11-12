@@ -1,7 +1,7 @@
 name: "Rain Alert"
 on:
   schedule:
-    - cron:  '0,10,20,30, 40,50, 8-23 * * 1-5'
+    - cron:  '*/10, 0-14,22-23 * * 1-5'
   workflow_dispatch:
   push:
     branches:
