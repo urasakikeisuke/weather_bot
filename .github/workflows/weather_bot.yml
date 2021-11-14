@@ -25,4 +25,4 @@ jobs:
         run:
           python3 src/weather_forecast.py
         env:
-          SLACK_WORKSPACE_URL: ${{ secrets.SLACK_WORKSPACE_URL }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
