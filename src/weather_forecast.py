@@ -126,7 +126,7 @@ class MessageGenerator():
                 "type": "header",
                 "text": {
                     "type": "plain_text",
-                    "text": f"おはようございます {random.choice(random_emoji_map)} 名古屋の天気予報です\n",
+                    "text": f"おはようございます {random.choice(random_emoji_map)} 天気予報です\n",
                     "emoji": True
                 }
             }
@@ -176,7 +176,7 @@ class MessageGenerator():
                 "type": "header",
                 "text": {
                     "type": "plain_text",
-                    "text": f"こんばんは {random.choice(random_emoji_map)} 名古屋の天気予報です\n",
+                    "text": f"こんばんは {random.choice(random_emoji_map)} 天気予報です\n",
                     "emoji": True
                 }
             }
