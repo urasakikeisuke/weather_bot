@@ -310,17 +310,17 @@ class WeatherForecast():
 
         message_generator = MessageGenerator(publishing_office, report_datetime, weathers, pops, temps)
 
-        text: str = message_generator.generate_text(type=self.datetime.get_am_pm(self.dt_now))
-        blocks: List[dict] = message_generator.generate_blocks(type=self.datetime.get_am_pm(self.dt_now))
+        am_pm: str = self.datetime.get_am_pm(self.dt_now)
+
+        text: str = message_generator.generate_text(type=am_pm)
+        blocks: List[dict] = message_generator.generate_blocks(type=am_pm)
 
         icon_emoji: Optional[str] = None
-        if self.datetime.get_am_pm(self.dt_now) == "AM" and weathers[0][1] in "雨":
-            icon_emoji = ":umbrella:"
-        elif self.datetime.get_am_pm(self.dt_now) == "PM" and weathers[1][1] in "雨":
+        if (am_pm == "AM" and weathers[0][1] in "雨") or (am_pm == "PM" and weathers[1][1] in "雨"):
             icon_emoji = ":umbrella:"
 
         response: SlackResponse = self.slack_client.chat_postMessage(
-            channel="C02MMNP8JE5",
+            channel="C02LZ68NS9H",
             text=text,
             blocks=blocks,
             icon_emoji=icon_emoji
