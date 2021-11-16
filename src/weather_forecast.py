@@ -156,7 +156,7 @@ class MessageGenerator():
                 "fields": [
                     {
                         "type": "mrkdwn",
-                        "text":f"気温: \n最低: {self.temps['0-lowest']}℃ 最高: {self.temps['0-highest']}℃"
+                        "text":f"気温: \n最低: -℃ 最高: {self.temps['0-highest']}℃"
                     },
                 ]
             }
@@ -302,6 +302,9 @@ class WeatherForecast():
         forecast: Dict[str, Any] = self._get_forecast()
         self.forecast_parser.parse(forecast)
 
+
+        pprint(forecast) 
+
         publishing_office = self.forecast_parser.publishing_office
         report_datetime = self.forecast_parser.report_datetime
         weathers = self.forecast_parser.weathers
@@ -319,14 +322,14 @@ class WeatherForecast():
         if (am_pm == "AM" and weathers[0][1] in "雨") or (am_pm == "PM" and weathers[1][1] in "雨"):
             icon_emoji = ":umbrella:"
 
-        response: SlackResponse = self.slack_client.chat_postMessage(
-            channel="C02LZ68NS9H",
-            text=text,
-            blocks=blocks,
-            icon_emoji=icon_emoji
-        )
+        # response: SlackResponse = self.slack_client.chat_postMessage(
+        #     channel="C02LZ68NS9H",
+        #     text=text,
+        #     blocks=blocks,
+        #     icon_emoji=icon_emoji
+        # )
 
-        pprint(response.status_code)
+        # pprint(response.status_code)
 
 
 if __name__ == "__main__":
