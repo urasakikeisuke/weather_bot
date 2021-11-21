@@ -110,7 +110,7 @@ class MessageGenerator():
         if type == "AM":
             text_header = f"*今日({self.dt_now.month}/{self.dt_now.day})の名古屋の天気* {wc_emoji_map[self.weathers[0][0]]}\n"
             text_body_weather = f"{self.weathers[0][1]}\n"
-            text_body_temp = f"*気温* 最低: {self.temps['0-lowest']}℃ 最高: {self.temps['0-highest']}℃\n"
+            text_body_temp = f"*気温* 最低: -℃ 最高: {self.temps['0-highest']}℃\n"
             text_body_pop = f"*降水確率* 午前: {self.pops['0-06-12']}% 午後: {self.pops['0-12-18']}% 夜: {self.pops['0-18-24']}%"
         else:
             text_header = f"*明日({self.dt_tomorrow.month}/{self.dt_tomorrow.day})の名古屋の天気* {wc_emoji_map[self.weathers[1][0]]}\n"
