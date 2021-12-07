@@ -239,7 +239,9 @@ class MessageGenerator():
             "type": "section",
             "text": {
                 "type": "mrkdwn",
-                "text": "<https://tenki.jp/lite/forecast/5/26/5110/23100/1hour.html|詳しい天気を見る>"
+                "text": "<https://tenki.jp/lite/forecast/5/26/5110/23100/1hour.html|詳しい天気を見る>",
+                "unfurl_links": false,
+                "unfurl_media": false
             }
         }
 
