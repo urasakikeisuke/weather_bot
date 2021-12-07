@@ -239,7 +239,7 @@ class MessageGenerator():
             "type": "section",
             "text": {
                 "type": "mrkdwn",
-                "text": "<https://www.jma.go.jp/bosai/forecast/#area_type=class20s&area_code=2310000|詳しい天気を見る>"
+                "text": "<https://tenki.jp/lite/forecast/5/26/5110/23100/1hour.html|詳しい天気を見る>"
             }
         }
 
