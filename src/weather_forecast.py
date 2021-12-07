@@ -318,7 +318,7 @@ class WeatherForecast():
         blocks: List[dict] = message_generator.generate_blocks(type=am_pm)
 
         icon_emoji: Optional[str] = None
-        if (am_pm == "AM" and weathers[0][1] in "雨") or (am_pm == "PM" and weathers[1][1] in "雨"):
+        if (am_pm == "AM" and "雨" in weathers[0][1]) or (am_pm == "PM" and "雨" in weathers[1][1]):
             icon_emoji = ":umbrella:"
 
         response: SlackResponse = self.slack_client.chat_postMessage(
