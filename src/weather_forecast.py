@@ -320,7 +320,7 @@ class WeatherForecast():
             icon_emoji = ":umbrella:"
 
         response: SlackResponse = self.slack_client.chat_postMessage(
-            channel="C02LZ68NS9H",
+            channel="C03F47NNP2T",
             text=text,
             blocks=blocks,
             icon_emoji=icon_emoji
